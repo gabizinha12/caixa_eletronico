@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Caixa Eletrônico Vitto</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bem vindo ao caixa Sistema Vitto Caixa Eletrônico</h1>
+    </div>
+    <div id="caixa" class="caixa">
+      <p class="text">Quanto deseja sacar?</p>
+      <input type="number" id="saque" class="saque" id="valorSaque" />
+      <button class="btn-enviar" type="button" onclick="caixaEletronico()">
+        Saque
+      </button>
+
+      <div id="calculoNotas"></div>
+    </div>
+    <script src="./caixa.js"></script>
+  </body>
+</html>
