@@ -94,7 +94,7 @@ function caixaEletronico(index) {
       ("<p>O valor máximo para o saque é de R$ 1000</p>");
     } else if (saque < 1) {
       document.getElementById("calculoNotas").innerHTML =
-        "<p> Valor mínimo para saque é R$ 1.00</p>";
+        "<p> Valor mínimo para saque é R$ 2.00</p>";
     }
     break;
   }
