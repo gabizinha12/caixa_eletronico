@@ -1,101 +1,33 @@
 function caixaEletronico(index) {
   let saque = document.getElementById("saque").value;
-  let notasTotal = [2, 5, 10, 20, 50, 100, 200];
+  let notasTotal = [200, 100, 50, 20, 10, 5, 2];
   var result = "<br>Quantidade de notas" + "<br>";
-  let ident = false;
+  if (saque > 1000) {
+    document.getElementById("calculoNotas").innerHTML =
+      "<p>O valor máximo para o saque é de R$ 1000</p>";
+    return;
+  }
+
+  console.log("A partir de " + notasTotal[index]);
 
   for (i = index; i < notasTotal.length; i++) {
-    if (saque <= 1000 && saque % 200 == 0) {
-      if (saque >= notasTotal[i]) {
-        result =
-          result +
-          parseInt(saque / notasTotal[i]) +
-          " Nota(s) de R$ " +
-          notasTotal[i] +
-          "<br>";
-        ident = true;
-        saque = saque % notasTotal[i];
-      }
-    } else if (saque <= 1000 && saque % 100 == 0) {
-      if (saque >= notasTotal[i]) {
-        result =
-          result +
-          parseInt(saque / notasTotal[i]) +
-          " Nota(s) de R$ " +
-          notasTotal[i] +
-          "<br>";
-        ident = true;
-        saque = saque % notasTotal[i];
-      }
-    } else if (saque <= 1000 && saque % 50 == 0) {
-      if (saque >= notasTotal[i]) {
-        result =
-          result +
-          parseInt(saque / notasTotal[i]) +
-          " Nota(s) de R$ " +
-          notasTotal[i] +
-          "<br>";
-        ident = true;
-        saque = saque % notasTotal[i];
-      }
-    } else if (saque <= 1000 && saque % 20 == 0) {
-      if (saque >= notasTotal[i]) {
-        result =
-          result +
-          parseInt(saque / notasTotal[i]) +
-          " Nota(s) de R$ " +
-          notasTotal[i] +
-          "<br>";
-        ident = true;
-        saque = saque % notasTotal[i];
-      }
-    } else if (saque <= 1000 && saque % 10 == 0) {
-      if (saque >= notasTotal[i]) {
-        result =
-          result +
-          parseInt(saque / notasTotal[i]) +
-          " Nota(s) de R$ " +
-          notasTotal[i] +
-          "<br>";
-        ident = true;
-        saque = saque % notasTotal[i];
-      }
-    } else if (saque <= 1000 && saque % 5 == 0) {
-      if (saque >= notasTotal[i]) {
-        result =
-          result +
-          parseInt(saque / notasTotal[i]) +
-          " Nota(s) de R$ " +
-          notasTotal[i] +
-          "<br>";
-        ident = true;
-        saque = saque % notasTotal[i];
-      }
-    } else if (saque <= 1000 && saque % 2 == 0) {
-      if (saque >= notasTotal[i]) {
-        result =
-          result +
-          parseInt(saque / notasTotal[i]) +
-          " Nota(s) de R$ " +
-          notasTotal[i] +
-          "<br>";
-        ident = true;
-        saque = saque % notasTotal[i];
-      }
-    } else {
-      ident = false;
-      break;
+    if (parseInt(saque / notasTotal[i]) > 0) {
+      result +=
+        parseInt(saque / notasTotal[i]) +
+        " Nota(s) de R$ " +
+        notasTotal[i] +
+        "<br>";
+      saque = saque % notasTotal[i];
     }
-    if (ident == true) {
-      document.getElementById("calculoNotas").innerHTML =
-        `<p>${result}</p>` + "<br>";
-    } else if (saque > 1000) {
-      document.getElementById("calculoNotas").innerHTML;
-      ("<p>O valor máximo para o saque é de R$ 1000</p>");
-    } else if (saque < 1) {
-      document.getElementById("calculoNotas").innerHTML =
-        "<p> Valor mínimo para saque é R$ 2.00</p>";
-    }
-    break;
+  }
+
+  if (saque == 0) {
+    document.getElementById("calculoNotas").innerHTML =
+      "<p>${result}</p>" + "<br>";
+  } else if (index < notasTotal.length) {
+    caixaEletronico(index + 1);
+  } else {
+    document.getElementById("calculoNotas").innerHTML =
+      "<p>Não temos troco pra " + saque + " por falta de nota de 1 real</p>";
   }
 }
