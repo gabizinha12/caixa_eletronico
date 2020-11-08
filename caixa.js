@@ -38,6 +38,8 @@ function sacarRec(valor, index) {
       if (saqueResto.length > 0) {
         saqueResto.unshift(notas[i]);
         return saqueResto;
+      } else if (notas == 3) {
+        return "Não é possível sacar este valor, não temos notas de 1";
       }
     }
   }
